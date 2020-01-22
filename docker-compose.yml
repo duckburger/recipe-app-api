@@ -1,0 +1,17 @@
+version: "3"
+
+# Service called "app" and the build section of the config will have the context of the current directory
+# Maps ports for the env
+# Maps a volume from a local machine to the docker env, meaning it will take local
+# changes in real time to the docker image
+# Runs a shell (sh) command (-c) for Django to run a dev server on
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
