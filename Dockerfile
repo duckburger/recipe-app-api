@@ -7,7 +7,12 @@ ENV PYTHONUNBUFFERED 1
 
 # Copies requirements file to the images's requirements and then installs what's in it using python
 COPY ./requirements.txt /requirements.txt
+# Gets dependencies required for postgres
+RUN apk add --update --no-cache postgresql-client
+RUN apk add --update --no-cache --virtual .tmp-build-deps \
+    gcc libc-dev linux-headers postgresql-dev
 RUN pip install -r /requirements.txt
+RUN apk del .tmp-build-deps
 
 # Makes a dir app and makes it the work dir from which the app will run
 RUN mkdir /app
