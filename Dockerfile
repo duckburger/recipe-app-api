@@ -1,6 +1,5 @@
 # Version of the docker image tha
 FROM python:3.8.1-alpine3.11
-MAINTAINER Kirill Murawski
 
 # Makes sure that python runs unbuffered which is recommended in docker instances
 ENV PYTHONUNBUFFERED 1

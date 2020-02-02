@@ -15,7 +15,6 @@ class CommandTests(TestCase):
             # Counts how many times this mock function has been called
             self.assertEqual(gi.call_count, 1)
 
-
     @patch('time.sleep', return_value=True)
     def test_wait_for_db(self, ts):
         '''Test waiting for db'''
